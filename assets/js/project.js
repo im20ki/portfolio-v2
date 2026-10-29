@@ -37,6 +37,7 @@ const projects = Array.from(projectSections).map((section, projectIndex) => ({
 function updateProjectView(project) {
 
     project.isTransitioning = true;
+    clearTimeout(project.transitionTimer);
 
     project.media.forEach((el, i) => {
         el.classList.toggle("active", i === project.stepIndex);
@@ -75,7 +76,7 @@ function updateProjectView(project) {
         captionBox.classList.add("active");
     }
 
-    setTimeout(() => {
+    project.transitionTimer = setTimeout(() => {
         project.isTransitioning = false;
     }, 450);
 }
@@ -431,6 +432,12 @@ function setupMobileVerticalSliders() {
                 });
 
             }, { passive: false });
+
+            frame.addEventListener("touchcancel", () => {
+                if (rafId) cancelAnimationFrame(rafId);
+                deltaY = 0;
+                update();
+            });
 
             frame.addEventListener("touchend", () => {
 

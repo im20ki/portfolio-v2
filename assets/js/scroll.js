@@ -11,11 +11,21 @@ const contactTrigger = document.getElementById("contactTrigger");
    2. WHEEL CONTROL (PC ONLY)
 ========================= */
 
-if (!isMobile()) {
+{
 
     window.addEventListener(
         "wheel",
         (e) => {
+
+            // The listener survives resizes; only intercept wheel on desktop.
+            if (isMobile()) return;
+
+            // Block background interaction before any first-wheel snap.
+            if ((modal && modal.classList.contains("active")) ||
+                document.querySelector(".video-modal.active")) {
+                e.preventDefault();
+                return;
+            }
 
             if (!firstWheelFixDone) {
                 const idx = getCurrentSceneIndex();
@@ -23,11 +33,6 @@ if (!isMobile()) {
                 if (scene) window.scrollTo(0, scene.offsetTop);
                 firstWheelFixDone = true;
             }
-
-            if (modal && modal.classList.contains("active")) return;
-
-            const activeVideoModal = document.querySelector(".video-modal.active");
-            if (activeVideoModal) return;
 
             if (currentAnimation) {
                 e.preventDefault();
@@ -195,3 +200,4 @@ window.addEventListener("resize", handleMobileHeader);
 ========================= */
 
 handleMobileHeader();
+handleContactTakeover();

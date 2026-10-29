@@ -88,6 +88,7 @@ function openImageModal(clickedImg) {
   }
 
   modal.classList.add("active");
+  document.body.dataset.previousOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
 
   if (isMobile() && modalContent && mobileModalTarget) {
@@ -104,7 +105,8 @@ function closeImageModal() {
   if (!modal) return;
 
   modal.classList.remove("active");
-  document.body.style.overflow = "";
+  document.body.style.overflow = document.body.dataset.previousOverflow || "";
+  delete document.body.dataset.previousOverflow;
   mobileModalTarget = null;
 
   if (modalContent) {
@@ -163,6 +165,7 @@ function openVideoModal(videoId) {
   `;
 
   videoModal.classList.add("active");
+  document.body.dataset.previousVideoOverflow = document.body.style.overflow;
   document.body.style.overflow = "hidden";
 }
 
@@ -171,7 +174,8 @@ function closeVideoModal() {
 
   videoModal.classList.remove("active");
   videoModalBody.innerHTML = "";
-  document.body.style.overflow = "";
+  document.body.style.overflow = document.body.dataset.previousVideoOverflow || "";
+  delete document.body.dataset.previousVideoOverflow;
 }
 
 /* =========================

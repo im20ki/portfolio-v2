@@ -382,7 +382,9 @@ function setupMobileVerticalSliders() {
 
             let index = 0;
             let startY = 0;
+            let startX = 0;
             let deltaY = 0;
+            let isVerticalGesture = false;
             let rafId = null;
 
             function applyTransform(offsetPercent = 0) {
@@ -408,7 +410,9 @@ function setupMobileVerticalSliders() {
 
             frame.addEventListener("touchstart", (e) => {
                 startY = e.touches[0].clientY;
+                startX = e.touches[0].clientX;
                 deltaY = 0;
+                isVerticalGesture = false;
                 track.style.transition = "none";
             }, { passive: true });
 
@@ -416,9 +420,14 @@ function setupMobileVerticalSliders() {
 
                 if (!e.touches?.length) return;
 
+                const deltaX = e.touches[0].clientX - startX;
                 deltaY = e.touches[0].clientY - startY;
 
-                if (Math.abs(deltaY) > 6 && e.cancelable) {
+                // Let horizontal swipes reach the mobile project carousel.
+                if (Math.abs(deltaX) > Math.abs(deltaY)) return;
+                if (Math.abs(deltaY) > 6) isVerticalGesture = true;
+
+                if (isVerticalGesture && e.cancelable) {
                     e.preventDefault();
                 }
 
@@ -447,8 +456,8 @@ function setupMobileVerticalSliders() {
                 const ratio = Math.abs(deltaY) / height;
                 const thresholdRatio = 0.18;
 
-                if (deltaY < 0 && ratio > thresholdRatio && index < images.length - 1) index++;
-                if (deltaY > 0 && ratio > thresholdRatio && index > 0) index--;
+                if (isVerticalGesture && deltaY < 0 && ratio > thresholdRatio && index < images.length - 1) index++;
+                if (isVerticalGesture && deltaY > 0 && ratio > thresholdRatio && index > 0) index--;
 
                 update();
             });

@@ -102,7 +102,7 @@ function openImageModal(clickedImg) {
 }
 
 function closeImageModal() {
-  if (!modal) return;
+  if (!modal || !modal.classList.contains("active")) return;
 
   modal.classList.remove("active");
   document.body.style.overflow = document.body.dataset.previousOverflow || "";
@@ -170,7 +170,7 @@ function openVideoModal(videoId) {
 }
 
 function closeVideoModal() {
-  if (!videoModal || !videoModalBody) return;
+  if (!videoModal || !videoModalBody || !videoModal.classList.contains("active")) return;
 
   videoModal.classList.remove("active");
   videoModalBody.innerHTML = "";

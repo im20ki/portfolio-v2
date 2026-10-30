@@ -385,6 +385,7 @@ function setupMobileVerticalSliders() {
             let startX = 0;
             let deltaY = 0;
             let isVerticalGesture = false;
+            let gestureDirection = null;
             let rafId = null;
 
             function applyTransform(offsetPercent = 0) {
@@ -413,6 +414,7 @@ function setupMobileVerticalSliders() {
                 startX = e.touches[0].clientX;
                 deltaY = 0;
                 isVerticalGesture = false;
+                gestureDirection = null;
                 track.style.transition = "none";
             }, { passive: true });
 
@@ -423,9 +425,12 @@ function setupMobileVerticalSliders() {
                 const deltaX = e.touches[0].clientX - startX;
                 deltaY = e.touches[0].clientY - startY;
 
-                // Let horizontal swipes reach the mobile project carousel.
-                if (Math.abs(deltaX) > Math.abs(deltaY)) return;
-                if (Math.abs(deltaY) > 6) isVerticalGesture = true;
+                // Lock the first deliberate movement direction for this gesture.
+                if (!gestureDirection && Math.max(Math.abs(deltaX), Math.abs(deltaY)) > 6) {
+                    gestureDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "horizontal" : "vertical";
+                }
+                if (gestureDirection !== "vertical") return;
+                isVerticalGesture = true;
 
                 if (isVerticalGesture && e.cancelable) {
                     e.preventDefault();

@@ -549,3 +549,10 @@
     overflow: visible;
   }
 }
+
+/* V2 build 003: desktop-only breathing room between project copy and media. */
+@media (min-width: 769px) {
+  .project-text-area .step {
+    right: clamp(24px, 3vw, 48px);
+  }
+}

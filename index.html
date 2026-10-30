@@ -13,10 +13,35 @@
   <link rel="stylesheet" href="assets/css/mobile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
+  <!-- V2 개발 버전 표시: 이 스타일과 아래 표시 요소만 제거하면 완전히 삭제됩니다. -->
+  <style>
+    .dev-version-tag {
+      position: fixed;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 4px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.86);
+      color: #fff;
+      font: 600 11px/1.4 Arial, sans-serif;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .dev-version-tag[hidden] { display: none !important; }
+  </style>
+
   <link rel="icon" href="data:,">
 </head>
 
 <body>
+
+  <!-- 다음 수정 때마다 build 번호를 올립니다. 숨기려면 아래 span에 hidden 속성 추가. -->
+  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 001</span>
+
 
   <header class="site-header">
     <h1 class="logo">IM20KI</h1>

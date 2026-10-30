@@ -173,7 +173,9 @@ function handleContactTakeover() {
     }
 }
 
-window.addEventListener("scroll", handleContactTakeover);
+window.addEventListener("scroll", handleContactTakeover, { passive: true });
+// Recalculate the takeover threshold when the viewport changes.
+window.addEventListener("resize", handleContactTakeover);
 
 /* =========================
    5. MOBILE HEADER STATE

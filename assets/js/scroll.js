@@ -18,7 +18,7 @@ const contactTrigger = document.getElementById("contactTrigger");
         (e) => {
 
             // The listener survives resizes; only intercept wheel on desktop.
-            if (isMobile()) return;
+            if (isMobile() || e.ctrlKey) return;
 
             // Block background interaction before any first-wheel snap.
             if ((modal && modal.classList.contains("active")) ||
@@ -26,6 +26,9 @@ const contactTrigger = document.getElementById("contactTrigger");
                 e.preventDefault();
                 return;
             }
+
+            // Ignore tiny trackpad movement before changing the current scene.
+            if (Math.abs(e.deltaY) < 30) return;
 
             if (!firstWheelFixDone) {
                 const idx = getCurrentSceneIndex();
@@ -38,8 +41,6 @@ const contactTrigger = document.getElementById("contactTrigger");
                 e.preventDefault();
                 return;
             }
-
-            if (Math.abs(e.deltaY) < 30) return;
 
             const currentSceneIndex = getCurrentSceneIndex();
             const currentScene = scenes[currentSceneIndex];

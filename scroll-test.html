@@ -42,7 +42,7 @@
 <body>
 
   <!-- [임시 개발용 버전 표시] 작업 배포마다 숫자를 1씩 증가시킵니다. -->
-  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 008</span>
+  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 009</span>
 
 
   <header class="site-header">
@@ -526,6 +526,15 @@
       if (mode === "no-spline") {
         document.querySelector("#hero spline-viewer")?.remove();
         document.querySelector(".hero-loader")?.remove();
+      } else if (mode === "pause-resume") {
+        // A/B test only: replace viewer with a runtime canvas for pause/resume control.
+        const viewer = document.querySelector("#hero spline-viewer");
+        if (viewer) {
+          const canvas = document.createElement("canvas");
+          canvas.id = "spline-runtime-test";
+          canvas.style.cssText = "display:block;width:100%;height:100%;touch-action:pan-y;";
+          viewer.replaceWith(canvas);
+        }
       } else if (mode === "auto-unload") {
         // Keep Spline interactive in the hero; unload it once offscreen on mobile.
         document.querySelector("#hero spline-viewer")?.setAttribute("unloadable", "true");
@@ -535,10 +544,55 @@
         document.head.appendChild(style);
       }
       const label = document.createElement("div");
-      label.textContent = mode === "no-spline" ? "TEST · 3D OFF" : mode === "no-blur" ? "TEST · BLUR OFF" : mode === "auto-unload" ? "TEST · 3D AUTO UNLOAD" : "TEST · BASELINE";
+      label.textContent = mode === "no-spline" ? "TEST · 3D OFF" : mode === "no-blur" ? "TEST · BLUR OFF" : mode === "auto-unload" ? "TEST · 3D AUTO UNLOAD" : mode === "pause-resume" ? "TEST · 3D PAUSE / RESUME" : "TEST · BASELINE";
       label.style.cssText = "position:fixed;bottom:12px;left:12px;z-index:9999;background:#111;color:#fff;padding:5px 9px;border-radius:5px;font:600 11px/1.4 Arial,sans-serif;pointer-events:none;";
       document.body.appendChild(label);
     })();
+  </script>
+
+  <!-- [진단 C] Spline Runtime rendering pause/resume: mobile test page only; production is unchanged. -->
+  <script type="module">
+    if (window.matchMedia("(max-width: 768px)").matches &&
+        new URLSearchParams(window.location.search).get("mode") === "pause-resume") {
+      const canvas = document.getElementById("spline-runtime-test");
+      const hero = document.getElementById("hero");
+      const loader = document.querySelector("#hero .hero-loader");
+      const label = document.createElement("div");
+      label.style.cssText = "position:fixed;bottom:39px;left:12px;z-index:9999;background:#111;color:#fff;padding:5px 9px;border-radius:5px;font:500 11px/1.4 Arial,sans-serif;pointer-events:none;";
+      label.textContent = "3D runtime: loading";
+      document.body.appendChild(label);
+      if (canvas && hero) {
+        try {
+          // Runtime officially supports stop/play without unloading the scene.
+          const { Application } = await import("https://unpkg.com/@splinetool/runtime@1.12.96/build/runtime.js");
+          const app = new Application(canvas);
+          await app.load("https://prod.spline.design/EekrAXUFLZrNigg0/scene.splinecode");
+          loader?.classList.add("hidden");
+          let paused = false;
+          const visibility = new IntersectionObserver(([entry]) => {
+            const shouldPause = !entry.isIntersecting;
+            if (shouldPause === paused) return;
+            paused = shouldPause;
+            if (paused) app.stop();
+            else app.play();
+            label.textContent = paused ? "3D runtime: paused offscreen" : "3D runtime: playing";
+          }, {threshold: 0.01});
+          visibility.observe(hero);
+          // If the user navigated away before the scene finished loading, halt immediately.
+          if (hero.getBoundingClientRect().bottom <= 0) {
+            app.stop();
+            paused = true;
+            label.textContent = "3D runtime: paused offscreen";
+          } else {
+            label.textContent = "3D runtime: playing";
+          }
+        } catch (err) {
+          label.textContent = "3D runtime: load failed";
+          loader?.classList.add("hidden");
+          console.error("3D pause/resume diagnostic failed:", err);
+        }
+      }
+    }
   </script>
 
     <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.41/build/spline-viewer.js"></script>

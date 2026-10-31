@@ -116,7 +116,33 @@ projectNavButtons.forEach((btn) => {
     });
 });
 
+// Mobile: avoid repeated nav DOM writes and forced layout while scrolling.
+let mobileNavFrame = null;
+let lastMobileNavIndex = null;
+
 function updateProjectNavOnScroll() {
+    if (isMobile()) {
+        if (mobileNavFrame !== null) return;
+
+        mobileNavFrame = requestAnimationFrame(() => {
+            mobileNavFrame = null;
+            const 기준선 = window.scrollY + window.innerHeight * 0.5;
+            let activeIndex = -1;
+
+            // Read all section positions before touching nav classes.
+            projectSections.forEach((section, index) => {
+                const top = section.offsetTop;
+                const bottom = top + section.offsetHeight;
+                if (기준선 >= top && 기준선 < bottom) activeIndex = index;
+            });
+
+            if (activeIndex !== lastMobileNavIndex) {
+                lastMobileNavIndex = activeIndex;
+                setActiveProjectNav(activeIndex);
+            }
+        });
+        return;
+    }
 
     const 기준선 = window.scrollY + window.innerHeight * 0.5;
 

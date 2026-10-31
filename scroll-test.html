@@ -42,7 +42,7 @@
 <body>
 
   <!-- [임시 개발용 버전 표시] 작업 배포마다 숫자를 1씩 증가시킵니다. -->
-  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 007</span>
+  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 008</span>
 
 
   <header class="site-header">
@@ -526,13 +526,16 @@
       if (mode === "no-spline") {
         document.querySelector("#hero spline-viewer")?.remove();
         document.querySelector(".hero-loader")?.remove();
+      } else if (mode === "auto-unload") {
+        // Keep Spline interactive in the hero; unload it once offscreen on mobile.
+        document.querySelector("#hero spline-viewer")?.setAttribute("unloadable", "true");
       } else if (mode === "no-blur") {
         const style = document.createElement("style");
         style.textContent = "@media (max-width: 768px) { body.mobile-header-scrolled .site-header { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; background: rgba(255,255,255,.94) !important; } }";
         document.head.appendChild(style);
       }
       const label = document.createElement("div");
-      label.textContent = mode === "no-spline" ? "TEST · 3D OFF" : mode === "no-blur" ? "TEST · BLUR OFF" : "TEST · BASELINE";
+      label.textContent = mode === "no-spline" ? "TEST · 3D OFF" : mode === "no-blur" ? "TEST · BLUR OFF" : mode === "auto-unload" ? "TEST · 3D AUTO UNLOAD" : "TEST · BASELINE";
       label.style.cssText = "position:fixed;bottom:12px;left:12px;z-index:9999;background:#111;color:#fff;padding:5px 9px;border-radius:5px;font:600 11px/1.4 Arial,sans-serif;pointer-events:none;";
       document.body.appendChild(label);
     })();

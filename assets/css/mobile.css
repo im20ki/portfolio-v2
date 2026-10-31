@@ -240,7 +240,6 @@
         pointer-events: auto !important;
         position: relative !important;
         height: 43vh;
-        will-change: transform;
     }
 
     .project-image-area .media.active {

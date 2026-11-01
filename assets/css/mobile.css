@@ -417,13 +417,13 @@
     }
 
     .contact-center {
-        width: min(80vw, 300px);
+        width: min(78vw, 260px);
         text-align: center;
     }
 
     .contact-center h2 {
-        font-size: clamp(19px, 5.3vw, 23px);
-        line-height: 1.15;
+        font-size: clamp(18px, 4.8vw, 22px);
+        line-height: 1.1;
     }
 
     .footer-takeover .contact-desc,
@@ -433,33 +433,31 @@
     }
 
     .footer-takeover .contact-email {
-        font-size: 12px;
-        margin-top: 6px;
+        font-size: clamp(10.5px, 2.7vw, 12px);
+        line-height: 1.3;
+        margin-top: 4px;
         margin-bottom: 0;
     }
 
+    /* Mobile: wrap complete sentences naturally inside the smaller inner ring. */
     .footer-takeover .portfolio-disclaimer {
-        width: 160px;
+        width: clamp(165px, 46vw, 232px);
         max-width: 100%;
-        margin: 10px auto 0;
-        font-size: 11px;
-        line-height: 1.38;
-        letter-spacing: 0;
+        margin: 8px auto 0;
+        font-size: clamp(11.4px, 3.1vw, 13.4px);
+        line-height: 1.3;
+        letter-spacing: -0.02em;
     }
 
-    .portfolio-disclaimer .disclaimer-line {
-        display: block;
-    }
-
-    .portfolio-disclaimer .disclaimer-sentence-break {
-        display: none;
+    .footer-takeover .disclaimer-sentence + .disclaimer-sentence {
+        margin-top: 3px;
     }
 
     /* ORBIT */
 
     .warning-line {
-        width: clamp(300px, 95vw, 420px);
-        height: clamp(300px, 95vw, 420px);
+        width: clamp(320px, 95vw, 420px);
+        height: clamp(320px, 95vw, 420px);
     }
 
     .orbit-text {

@@ -1,15 +1,15 @@
-/* =========================
-   1. DOM CACHE
-========================= */
+
+
+
 
 const logo = document.querySelector(".logo");
 
 const contactTakeover = document.getElementById("contactTakeover");
 const contactTrigger = document.getElementById("contactTrigger");
 
-/* =========================
-   2. WHEEL CONTROL (PC ONLY)
-========================= */
+
+
+
 
 {
 
@@ -17,17 +17,17 @@ const contactTrigger = document.getElementById("contactTrigger");
         "wheel",
         (e) => {
 
-            // The listener survives resizes; only intercept wheel on desktop.
+
             if (isMobile() || e.ctrlKey) return;
 
-            // Block background interaction before any first-wheel snap.
+
             if ((modal && modal.classList.contains("active")) ||
                 document.querySelector(".video-modal.active")) {
                 e.preventDefault();
                 return;
             }
 
-            // Ignore tiny trackpad movement before changing the current scene.
+
             if (Math.abs(e.deltaY) < 30) return;
 
             if (!firstWheelFixDone) {
@@ -130,9 +130,9 @@ const contactTrigger = document.getElementById("contactTrigger");
     );
 }
 
-/* =========================
-   3. LOGO → TOP
-========================= */
+
+
+
 
 if (logo) {
     logo.addEventListener("click", () => {
@@ -141,9 +141,9 @@ if (logo) {
     });
 }
 
-/* =========================
-   4. CONTACT TAKEOVER
-========================= */
+
+
+
 
 function handleContactTakeover() {
 
@@ -174,12 +174,12 @@ function handleContactTakeover() {
 }
 
 window.addEventListener("scroll", handleContactTakeover, { passive: true });
-// Recalculate the takeover threshold when the viewport changes.
+
 window.addEventListener("resize", handleContactTakeover);
 
-/* =========================
-   5. MOBILE HEADER STATE
-========================= */
+
+
+
 
 function handleMobileHeader() {
 
@@ -198,9 +198,9 @@ function handleMobileHeader() {
 window.addEventListener("scroll", handleMobileHeader);
 window.addEventListener("resize", handleMobileHeader);
 
-/* =========================
-   6. INIT
-========================= */
+
+
+
 
 handleMobileHeader();
 handleContactTakeover();

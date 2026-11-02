@@ -1,6 +1,6 @@
-/* =========================
-   1. DOM CACHE
-========================= */
+
+
+
 
 const modal = document.getElementById("imageModal");
 const modalBody = document.querySelector(".img-modal-body");
@@ -8,9 +8,9 @@ const modalDim = document.querySelector(".img-modal-dim");
 const modalClose = document.querySelector(".img-modal-close");
 const modalContent = document.querySelector(".img-modal-content");
 
-/* =========================
-   2. STATE
-========================= */
+
+
+
 
 let videoModal = null;
 let videoModalDim = null;
@@ -19,9 +19,9 @@ let videoModalBody = null;
 
 let mobileModalTarget = null;
 
-/* =========================
-   3. BASE EVENT (SCROLL BLOCK)
-========================= */
+
+
+
 
 if (modalContent) {
   modalContent.addEventListener(
@@ -33,9 +33,9 @@ if (modalContent) {
   );
 }
 
-/* =========================
-   4. IMAGE MODAL
-========================= */
+
+
+
 
 function openImageModal(clickedImg) {
   if (!modal || !modalBody) return;
@@ -114,9 +114,9 @@ function closeImageModal() {
   }
 }
 
-/* =========================
-   5. VIDEO MODAL
-========================= */
+
+
+
 
 function ensureVideoModal() {
   if (videoModal) return;
@@ -178,9 +178,9 @@ function closeVideoModal() {
   delete document.body.dataset.previousVideoOverflow;
 }
 
-/* =========================
-   6. EVENT BINDING
-========================= */
+
+
+
 
 if (modalDim) {
   modalDim.addEventListener("click", closeImageModal);

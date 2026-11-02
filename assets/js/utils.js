@@ -1,23 +1,23 @@
-/* =========================
-   1. DOM & STATE
-========================= */
+
+
+
 
 const scenes = document.querySelectorAll(".scene");
 
 let currentAnimation = null;
 let firstWheelFixDone = false;
 
-/* =========================
-   2. ENVIRONMENT
-========================= */
+
+
+
 
 function isMobile() {
   return window.innerWidth <= 768;
 }
 
-/* =========================
-   3. SCENE HELPERS
-========================= */
+
+
+
 
 function isAlreadyInScene(index) {
 
@@ -48,9 +48,9 @@ function getCurrentSceneIndex() {
   return index;
 }
 
-/* =========================
-   4. SCROLL SYSTEM
-========================= */
+
+
+
 
 function scrollToScene(index) {
 

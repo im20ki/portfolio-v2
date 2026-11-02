@@ -1,6 +1,6 @@
-/* ==================================================
-   1. RESET / BASE
-================================================== */
+
+
+
 
 * {
   margin: 0;
@@ -20,9 +20,9 @@ body {
   overflow-x: hidden;
 }
 
-/* ==================================================
-   2. UTILITIES
-================================================== */
+
+
+
 
 .pc-only {
   display: inline;
@@ -32,9 +32,9 @@ body {
   display: none;
 }
 
-/* ==================================================
-   3. STATE (GLOBAL)
-================================================== */
+
+
+
 
 body.contact-open .site-header {
   z-index: 300;
@@ -44,9 +44,9 @@ body.contact-open .site-header .logo {
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* ==================================================
-   4. HEADER / NAV
-================================================== */
+
+
+
 
 .site-header {
   position: fixed;
@@ -66,7 +66,7 @@ body.contact-open .site-header .logo {
   cursor: pointer;
 }
 
-/* NAV */
+
 
 .project-nav {
   display: flex;
@@ -115,9 +115,9 @@ body.contact-open .site-header .logo {
   opacity: 1;
 }
 
-/* ==================================================
-   5. HERO
-================================================== */
+
+
+
 
 #hero {
   position: relative;
@@ -149,7 +149,7 @@ body.contact-open .site-header .logo {
   z-index: 2;
 }
 
-/* loader */
+
 
 .hero-loader {
   position: absolute;
@@ -173,7 +173,7 @@ body.contact-open .site-header .logo {
   pointer-events: none;
 }
 
-/* hero UI */
+
 
 .hero-content.cyber-ui {
   position: absolute;
@@ -240,9 +240,9 @@ body.contact-open .site-header .logo {
   text-transform: uppercase;
 }
 
-/* ==================================================
-   6. ABOUT
-================================================== */
+
+
+
 
 #about h2 {
   font-size: 2rem;
@@ -277,7 +277,7 @@ body.contact-open .site-header .logo {
   letter-spacing: 0.04em;
 }
 
-/* Skills are grouped by role, so current strengths are easy to scan. */
+
 .skill-groups {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -305,9 +305,9 @@ body.contact-open .site-header .logo {
   overflow-wrap: break-word;
 }
 
-/* ==================================================
-   7. CONTACT
-================================================== */
+
+
+
 
 .footer-takeover {
   position: fixed;
@@ -379,9 +379,9 @@ body.contact-open .site-header .logo {
   margin-top: 5px;
 }
 
-/* ==================================================
-   8. UI EFFECTS (ORBIT / ANIMATION)
-================================================== */
+
+
+
 
 .warning-line {
   position: absolute;
@@ -427,9 +427,9 @@ body.contact-open .site-header .logo {
   to { transform: rotate(360deg); }
 }
 
-/* ==================================================
-   9. SCROLL REVEAL
-================================================== */
+
+
+
 
 .reveal {
   opacity: 0;

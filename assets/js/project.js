@@ -1,6 +1,6 @@
-/* =========================
-   1. DOM & DATA
-========================= */
+
+
+
 
 const projectSections = document.querySelectorAll(".project-sticky");
 
@@ -30,9 +30,9 @@ const projects = Array.from(projectSections).map((section, projectIndex) => ({
     isTransitioning: false,
 }));
 
-/* =========================
-   2. PROJECT CORE
-========================= */
+
+
+
 
 function updateProjectView(project) {
 
@@ -85,9 +85,9 @@ if (!isMobile()) {
     projects.forEach(updateProjectView);
 }
 
-/* =========================
-   3. PROJECT NAV
-========================= */
+
+
+
 
 const projectNavButtons = document.querySelectorAll(".project-nav button");
 
@@ -116,7 +116,7 @@ projectNavButtons.forEach((btn) => {
     });
 });
 
-// Mobile: avoid repeated nav DOM writes and forced layout while scrolling.
+
 let mobileNavFrame = null;
 let lastMobileNavIndex = null;
 
@@ -129,7 +129,7 @@ function updateProjectNavOnScroll() {
             const 기준선 = window.scrollY + window.innerHeight * 0.5;
             let activeIndex = -1;
 
-            // Read all section positions before touching nav classes.
+
             projectSections.forEach((section, index) => {
                 const top = section.offsetTop;
                 const bottom = top + section.offsetHeight;
@@ -161,9 +161,9 @@ function updateProjectNavOnScroll() {
 window.addEventListener("scroll", updateProjectNavOnScroll);
 updateProjectNavOnScroll();
 
-/* =========================
-   4. CAPTION (PC HOVER)
-========================= */
+
+
+
 
 if (!isMobile()) {
 
@@ -199,9 +199,9 @@ if (!isMobile()) {
     });
 }
 
-/* =========================
-   5. MOBILE CAPTION CORE
-========================= */
+
+
+
 
 function getMediaCaptionTargets(media) {
     if (!media) return [];
@@ -231,9 +231,9 @@ function updateMobileProjectCaption(section, media) {
     captionBox.classList.toggle("active", Boolean(text));
 }
 
-/* =========================
-   6. MOBILE ACTIVE MEDIA
-========================= */
+
+
+
 
 function updateMobileProjectActiveMedia(section) {
     if (!isMobile() || !section) return;
@@ -266,9 +266,9 @@ function updateMobileProjectActiveMedia(section) {
     updateMobileProjectCaption(section, activeMedia);
 }
 
-/* =========================
-   7. MOBILE CAPTION SETUP
-========================= */
+
+
+
 
 function setupMobileProjectCaptions() {
     if (!isMobile()) return;
@@ -310,9 +310,9 @@ function setupMobileProjectCaptions() {
     });
 }
 
-/* =========================
-   8. MOBILE VERTICAL SLIDER
-========================= */
+
+
+
 
 function setupMobileVerticalSliders() {
     if (!isMobile()) return;
@@ -451,7 +451,7 @@ function setupMobileVerticalSliders() {
                 const deltaX = e.touches[0].clientX - startX;
                 deltaY = e.touches[0].clientY - startY;
 
-                // Lock the first deliberate movement direction for this gesture.
+
                 if (!gestureDirection && Math.max(Math.abs(deltaX), Math.abs(deltaY)) > 6) {
                     gestureDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "horizontal" : "vertical";
                 }
@@ -501,9 +501,9 @@ function setupMobileVerticalSliders() {
     });
 }
 
-/* =========================
-   9. YOUTUBE UTIL
-========================= */
+
+
+
 
 function getYoutubeIdFromSrc(src = "") {
     const match = src.match(/embed\/([^?&"/]+)/);
@@ -512,9 +512,9 @@ function getYoutubeIdFromSrc(src = "") {
 
 window.getYoutubeIdFromSrc = getYoutubeIdFromSrc;
 
-/* =========================
-   10. YOUTUBE OVERLAY (PC)
-========================= */
+
+
+
 
 function buildPcYoutubeThumbOverlays() {
     if (isMobile()) return;
@@ -551,9 +551,9 @@ if (!isMobile()) {
     buildPcYoutubeThumbOverlays();
 }
 
-/* =========================
-   11. INIT
-========================= */
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     setupMobileVerticalSliders();

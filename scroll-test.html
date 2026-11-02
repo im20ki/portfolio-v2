@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="assets/css/mobile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- [임시 개발용 버전 표시] 숨기기: body의 버전 span에 hidden 추가 / 삭제: 이 style과 span 제거 -->
+  
   <style>
     .dev-version-tag {
-      /* 화면(뷰포트)에 고정: 히어로뿐 아니라 모든 섹션에서 계속 보임 */
+      
       position: fixed;
       top: max(6px, env(safe-area-inset-top));
       left: 50%;
@@ -41,7 +41,7 @@
 
 <body>
 
-  <!-- [임시 개발용 버전 표시] 작업 배포마다 숫자를 1씩 증가시킵니다. -->
+  
   <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 010</span>
 
 
@@ -123,7 +123,7 @@
       </div>
     </section>
 
-    <!-- PROJECT 01 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -211,7 +211,7 @@
       <div class="project-divider"></div>
     </section>
 
-    <!-- PROJECT 02 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -305,7 +305,7 @@
       <div class="project-divider"></div>
     </section>
 
-    <!-- PROJECT 03 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -372,7 +372,7 @@
       <div class="project-divider"></div>
     </section>
 
-    <!-- PROJECT 04 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -457,29 +457,29 @@
 
     <div id="contactTrigger" class="scene"></div>
 
-    <!-- CONTACT TAKEOVER -->
+    
     <div class="footer-takeover" id="contactTakeover">
 
-      <!-- 상단 경고 라인 -->
-      <!-- 원형 텍스트 링 (반시계 회전) -->
+      
+      
       <div class="warning-line warning-top">
         <svg class="orbit-svg" viewBox="0 0 380 380" aria-hidden="true">
           <defs>
-            <!-- 안쪽 링 -->
+            
             <path id="orbitInner" d="M190,190 m-140,0 a140,140 0 1,1 280,0 a140,140 0 1,1 -280,0" />
 
-            <!-- 바깥 링 -->
+            
             <path id="orbitOuter" d="M190,190 m-175,0 a175,175 0 1,1 350,0 a175,175 0 1,1 -350,0" />
           </defs>
 
-          <!-- OUTER RING (시계 방향) -->
+          
           <text class="orbit-text outer-ring">
             <textPath href="#orbitOuter" startOffset="0%">
               ⚠ 장기 무사고 운전 경력 보유 • ⚠ 하이트진로 인증 소맥 제조 자격증 보유 • ⚠ 초단타 매매 기술 보유 • ⚠ 삼성보다 '비스포크'를 먼저 사용한 선구자 • ⚠ 추가중
             </textPath>
           </text>
 
-          <!-- INNER RING (반시계 방향) -->
+          
           <text class="orbit-text inner-ring">
             <textPath href="#orbitInner" startOffset="0%">
               ⚠ 해외 14개국 여행 경험, 자칭 생존 전문가 • ⚠ 유튜브·틱톡 합산 구독자 약 880명 보유 (26.05 기준) • ⚠ 헌혈 70회 이상, 마음씨 좋은 헌혈인 • ⚠ 추가중
@@ -490,7 +490,7 @@
       </div>
 
 
-      <!-- 중앙 핵심 -->
+      
       <div class="contact-center">
         <h2>CONTACT</h2>
         <p class="contact-email">inglyki2@gmail.com</p>
@@ -513,12 +513,12 @@
         <button class="img-modal-close">✕</button>
 
         <div class="img-modal-body">
-          <!-- 여기에 이미지들이 세로로 들어감 -->
+          
         </div>
       </div>
     </div>
 
-  <!-- [임시 스크롤 진단 페이지 전용] 테스트 종료 후 scroll-test.html 파일 전체 삭제 -->
+  
   <script>
     (() => {
       if (!window.matchMedia("(max-width: 768px)").matches) return;
@@ -527,7 +527,7 @@
         document.querySelector("#hero spline-viewer")?.remove();
         document.querySelector(".hero-loader")?.remove();
       } else if (mode === "pause-resume" || mode === "manual-render") {
-        // A/B test only: replace viewer with a runtime canvas for pause/resume control.
+
         const viewer = document.querySelector("#hero spline-viewer");
         if (viewer) {
           const canvas = document.createElement("canvas");
@@ -536,7 +536,7 @@
           viewer.replaceWith(canvas);
         }
       } else if (mode === "auto-unload") {
-        // Keep Spline interactive in the hero; unload it once offscreen on mobile.
+
         document.querySelector("#hero spline-viewer")?.setAttribute("unloadable", "true");
       } else if (mode === "no-blur") {
         const style = document.createElement("style");
@@ -550,7 +550,7 @@
     })();
   </script>
 
-  <!-- [진단 C] Spline Runtime rendering pause/resume: mobile test page only; production is unchanged. -->
+  
   <script type="module">
     if (window.matchMedia("(max-width: 768px)").matches &&
         ["pause-resume", "manual-render"].includes(new URLSearchParams(window.location.search).get("mode"))) {
@@ -564,7 +564,7 @@
       document.body.appendChild(label);
       if (canvas && hero) {
         try {
-          // Runtime officially supports stop/play without unloading the scene.
+
           const { Application } = await import("https://unpkg.com/@splinetool/runtime@1.12.96/build/runtime.js");
           const app = new Application(canvas, { renderMode: "auto" });
           await app.load("https://prod.spline.design/EekrAXUFLZrNigg0/scene.splinecode");
@@ -574,8 +574,8 @@
             if (shouldPause === paused) return;
             paused = shouldPause;
             if (manualRender) {
-              // Do not call stop/play; keep the scene state and its animation clock.
-              // Suppress offscreen rendering while allowing the scene to stay loaded.
+
+
               app.renderMode = paused ? "manual" : "auto";
               if (!paused) app.requestRender();
               label.textContent = paused ? "3D render: manual (offscreen)" : "3D render: auto (onscreen)";
@@ -589,7 +589,7 @@
             setPaused(!entry.isIntersecting);
           }, {threshold: 0.01});
           visibility.observe(hero);
-          // Handle users who scroll down before the asset finishes loading.
+
           setPaused(hero.getBoundingClientRect().bottom <= 0);
           if (!paused) {
             label.textContent = manualRender ? "3D render: auto (onscreen)" : "3D runtime: playing";

@@ -1,6 +1,6 @@
-/* ==================================================
-   1. LAYOUT (PC ONLY)
-================================================== */
+
+
+
 
 .scene {
   height: 100vh;
@@ -15,9 +15,9 @@
 .mobile-br {
         display: none;
     }
-/* ==================================================
-   2. ABOUT
-================================================== */
+
+
+
 
 #about .about-wrap {
   width: 100%;
@@ -43,7 +43,7 @@
   margin: 0;
 }
 
-/* typography */
+
 
 #about h2 {
   font-size: 1.8rem;
@@ -67,9 +67,9 @@
   color: rgba(0, 0, 0, 0.75);
 }
 
-/* ==================================================
-   3. PROJECT STRUCTURE
-================================================== */
+
+
+
 
 .project-sticky {
   display: flex;
@@ -78,7 +78,7 @@
   margin-bottom: 120px;
 }
 
-/* TEXT */
+
 
 .project-text-area {
   flex: 0 0 50%;
@@ -125,7 +125,7 @@
   word-break: keep-all;
 }
 
-/* IMAGE AREA */
+
 
 .project-image-area {
   flex: 0 0 50%;
@@ -153,7 +153,7 @@
   transform: scale(1.005);
 }
 
-/* FRAME */
+
 
 .project-image-area .frame {
   display: inline-block;
@@ -168,9 +168,9 @@
   max-height: calc(100vh - 202px);
 }
 
-/* ==================================================
-   4. MEDIA SYSTEM
-================================================== */
+
+
+
 
 .project-image-area .media {
   position: absolute;
@@ -197,7 +197,7 @@
   z-index: 1;
 }
 
-/* clickable */
+
 
 .project-image-area .media.active img.media,
 .project-image-area .media.active img.youtube-thumb {
@@ -212,7 +212,7 @@
   cursor: pointer;
 }
 
-/* youtube thumb */
+
 
 .project-image-area .youtube-thumb {
   width: 100%;
@@ -225,7 +225,7 @@
   transition: transform 0.35s ease;
 }
 
-/* youtube grid */
+
 
 .project-image-area .youtube-grid {
   display: grid;
@@ -278,9 +278,9 @@
   transform: scale(1.005);
 }
 
-/* ==================================================
-   5. VIDEO MODAL (PC)
-================================================== */
+
+
+
 
 @media (min-width: 769px) {
 
@@ -346,9 +346,9 @@
   }
 }
 
-/* ==================================================
-   6. IMAGE MODAL
-================================================== */
+
+
+
 
 .img-modal {
   position: fixed;
@@ -428,7 +428,7 @@
   object-fit: contain;
 }
 
-/* scrollbar */
+
 
 .img-modal-content::-webkit-scrollbar {
   width: 8px;
@@ -448,9 +448,9 @@
   background: rgba(255, 255, 255, 0.5);
 }
 
-/* ==================================================
-   7. UI DETAILS
-================================================== */
+
+
+
 
 #contactTrigger {
   height: 100vh;
@@ -476,7 +476,7 @@
   opacity: 0.7;
 }
 
-/* caption */
+
 
 .project-hover-caption {
   font-size: 0.9rem;
@@ -513,9 +513,9 @@
   transition: opacity 0.25s ease;
 }
 
-/* ==================================================
-   8. YOUTUBE FIX (PC ONLY)
-================================================== */
+
+
+
 
 @media (min-width: 769px) {
 
@@ -551,7 +551,7 @@
   }
 }
 
-/* V2 build 003: desktop-only breathing room between project copy and media. */
+
 @media (min-width: 769px) {
   .project-text-area .step {
     right: clamp(24px, 3vw, 48px);

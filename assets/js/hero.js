@@ -1,25 +1,25 @@
-/* =========================
-   1. DOM CACHE
-========================= */
 
-// Reveal elements
+
+
+
+
 const reveals = document.querySelectorAll(".reveal");
 
-// Hero UI
+
 const heroUI = document.querySelector(".hero-content.cyber-ui");
 
-// Spline & Loader
+
 const splineViewer = document.querySelector("spline-viewer");
 const heroLoader = document.querySelector(".hero-loader");
 
-// Hero section
+
 const heroSection = document.getElementById("hero");
 const heroBg = document.querySelector("#hero .hero-bg");
 
 
-/* =========================
-   2. STATE
-========================= */
+
+
+
 
 let targetX = 0;
 let targetY = 0;
@@ -28,9 +28,9 @@ let currentX = 0;
 let currentY = 0;
 
 
-/* =========================
-   3. UTIL
-========================= */
+
+
+
 
 function isHeroInView() {
   const rect = heroSection.getBoundingClientRect();
@@ -38,9 +38,9 @@ function isHeroInView() {
 }
 
 
-/* =========================
-   4. REVEAL ON SCROLL
-========================= */
+
+
+
 
 function revealOnScroll() {
   const triggerPoint = window.innerHeight * 0.85;
@@ -55,9 +55,9 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 
-/* =========================
-   5. HERO MICRO MOVEMENT
-========================= */
+
+
+
 
 if (heroUI && !isMobile()) {
 
@@ -80,13 +80,13 @@ if (heroUI && !isMobile()) {
 }
 
 
-/* =========================
-   6. SPLINE SYSTEM
-========================= */
+
+
+
 
 if (splineViewer && !isMobile()) {
 
-  // Hidden prewarm container
+
   const prewarmBox = document.createElement("div");
 
   prewarmBox.style.cssText = `
@@ -107,14 +107,14 @@ if (splineViewer && !isMobile()) {
 
     if (isHeroInView()) {
 
-      // Move spline into hero when visible
+
       if (heroBg && splineViewer.parentElement !== heroBg) {
         heroBg.appendChild(splineViewer);
       }
 
     } else {
 
-      // Move spline to hidden container when not visible
+
       if (splineViewer.parentElement !== prewarmBox) {
         prewarmBox.appendChild(splineViewer);
       }
@@ -128,9 +128,9 @@ if (splineViewer && !isMobile()) {
 }
 
 
-/* =========================
-   7. SPLINE LOADER
-========================= */
+
+
+
 
 if (splineViewer && heroLoader) {
 
@@ -140,7 +140,7 @@ if (splineViewer && heroLoader) {
 
       heroLoader.classList.add("hidden");
 
-      // Force layout refresh
+
       window.dispatchEvent(new Event("resize"));
 
     }, 500);

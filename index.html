@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/mobile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- [임시 개발용 버전 표시] PC 하단 고정 / 모바일 숨김. 필요 시 span과 이 style을 삭제 -->
+  
   <style>
     .dev-version-tag {
       position: fixed;
@@ -40,8 +40,8 @@
 
 <body>
 
-  <!-- [임시 개발용 버전 표시] 작업 배포마다 숫자를 1씩 증가시킵니다. -->
-  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 028</span>
+  
+  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 029</span>
 
 
   <header class="site-header">
@@ -127,7 +127,7 @@
       </div>
     </section>
 
-    <!-- PROJECT 01 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -215,7 +215,7 @@
       <div class="project-divider"></div>
     </section>
 
-    <!-- PROJECT 02 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -310,7 +310,7 @@
       <div class="project-divider"></div>
     </section>
 
-    <!-- PROJECT 03 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -377,7 +377,7 @@
       <div class="project-divider"></div>
     </section>
 
-    <!-- PROJECT 04 -->
+    
     <section class="scene project-sticky">
 
       <div class="project-text-area">
@@ -462,29 +462,29 @@
 
     <div id="contactTrigger" class="scene"></div>
 
-    <!-- CONTACT TAKEOVER -->
+    
     <div class="footer-takeover" id="contactTakeover">
 
-      <!-- 상단 경고 라인 -->
-      <!-- 원형 텍스트 링 (반시계 회전) -->
+      
+      
       <div class="warning-line warning-top">
         <svg class="orbit-svg" viewBox="0 0 380 380" aria-hidden="true">
           <defs>
-            <!-- 안쪽 링 -->
+            
             <path id="orbitInner" d="M190,190 m-140,0 a140,140 0 1,1 280,0 a140,140 0 1,1 -280,0" />
 
-            <!-- 바깥 링 -->
+            
             <path id="orbitOuter" d="M190,190 m-175,0 a175,175 0 1,1 350,0 a175,175 0 1,1 -350,0" />
           </defs>
 
-          <!-- OUTER RING (시계 방향) -->
+          
           <text class="orbit-text outer-ring">
             <textPath href="#orbitOuter" startOffset="0%">
               ⚠ 장기 무사고 운전 경력 보유 • ⚠ 하이트진로 인증 소맥 제조 자격증 보유 • ⚠ 삼성보다 '비스포크'를 먼저 사용한 선구자
             </textPath>
           </text>
 
-          <!-- INNER RING (반시계 방향) -->
+          
           <text class="orbit-text inner-ring">
             <textPath href="#orbitInner" startOffset="0%">
               ⚠ 해외 14개국 여행 경험, 자칭 생존 전문가 • ⚠ 유튜브·틱톡 합산 구독자 약 1,100명 보유 (2026년 10월 기준) • ⚠ 헌혈 70회 이상, 마음씨 좋은 헌혈인
@@ -495,7 +495,7 @@
       </div>
 
 
-      <!-- 중앙 핵심 -->
+      
       <div class="contact-center">
         <h2>CONTACT</h2>
         <p class="contact-email">inglyki2@gmail.com</p>
@@ -517,13 +517,13 @@
         <button class="img-modal-close">✕</button>
 
         <div class="img-modal-body">
-          <!-- 여기에 이미지들이 세로로 들어감 -->
+          
         </div>
       </div>
     </div>
 
-    <!-- Mobile only: preserve the Spline scene, reduce offscreen rendering cost.
-         PC keeps the existing spline-viewer and hero logic unchanged. -->
+    
+
     <script>
       (() => {
         if (!window.matchMedia("(max-width: 768px)").matches) return;
@@ -545,7 +545,7 @@
 
         if (canvas && hero) {
           try {
-            // Same tested Spline runtime/render mode as build 010.
+
             const { Application } = await import("https://unpkg.com/@splinetool/runtime@1.12.96/build/runtime.js");
             const app = new Application(canvas, { renderMode: "auto" });
             await app.load("https://prod.spline.design/EekrAXUFLZrNigg0/scene.splinecode");
@@ -555,7 +555,7 @@
             const setPaused = (shouldPause) => {
               if (shouldPause === paused) return;
               paused = shouldPause;
-              // Do not call stop/play or unload the scene: preserve animation continuity.
+
               app.renderMode = paused ? "manual" : "auto";
               if (!paused) app.requestRender();
             };
@@ -567,7 +567,7 @@
             setPaused(hero.getBoundingClientRect().bottom <= 0);
           } catch (error) {
             console.error("Mobile Spline runtime failed; reverting to viewer.", error);
-            // Gracefully fall back to the original viewer when the runtime cannot load.
+
             const fallback = document.createElement("spline-viewer");
             fallback.setAttribute("url", "https://prod.spline.design/EekrAXUFLZrNigg0/scene.splinecode");
             canvas.replaceWith(fallback);

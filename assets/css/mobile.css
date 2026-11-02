@@ -1,8 +1,8 @@
 @media (max-width: 768px) {
 
-    /* ==================================================
-   1. GLOBAL / BASE
-================================================== */
+    
+
+
 
     body {
         overflow-x: visible;
@@ -27,9 +27,9 @@
         letter-spacing: 0.2em;
     }
 
-    /* ==================================================
-   2. HEADER
-================================================== */
+    
+
+
 
     .site-header {
         transition: background 0.3s ease, backdrop-filter 0.3s ease;
@@ -57,9 +57,9 @@
         height: 100vh;
     }
 
-    /* ==================================================
-   3. HERO
-================================================== */
+    
+
+
 
     #hero {
         min-height: 100vh;
@@ -84,9 +84,9 @@
         margin-bottom: 16px;
     }
 
-    /* ==================================================
-   4. ABOUT
-================================================== */
+    
+
+
 
     #about {
         position: relative;
@@ -152,9 +152,9 @@
         margin-bottom: 12px;
     }
 
-    /* ==================================================
-   5. PROJECT LAYOUT
-================================================== */
+    
+
+
 
     .project-divider {
         height: 1px;
@@ -175,9 +175,9 @@
         margin-top: 50px;
     }
 
-    /* ==================================================
-   6. PROJECT TEXT
-================================================== */
+    
+
+
 
     .project-text-area {
         position: relative;
@@ -212,9 +212,9 @@
         overflow-wrap: break-word;
     }
 
-    /* ==================================================
-   7. PROJECT IMAGE AREA
-================================================== */
+    
+
+
 
     .project-image-area {
         position: relative;
@@ -284,7 +284,7 @@
         object-fit: contain;
     }
 
-    /* MULTI FRAME */
+    
 
     .multi-frame-track {
         will-change: transform;
@@ -312,7 +312,7 @@
         object-fit: contain;
     }
 
-    /* INDICATOR */
+    
 
     .project-image-area .media .frame-indicator {
         position: absolute;
@@ -342,9 +342,9 @@
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
     }
 
-    /* ==================================================
-   8. YOUTUBE
-================================================== */
+    
+
+
 
     .project-image-area .youtube-grid {
         display: block !important;
@@ -388,9 +388,9 @@
         gap: 20px;
     }
 
-    /* ==================================================
-   9. CAPTION
-================================================== */
+    
+
+
 
     .project-hover-caption {
         display: flex;
@@ -431,9 +431,9 @@
         min-height: calc(0.82rem * 1.6 * 2);
     }
 
-    /* ==================================================
-   10. CONTACT
-================================================== */
+    
+
+
 
     #contact {
         padding-top: 80px;
@@ -462,7 +462,7 @@
         margin-bottom: 0;
     }
 
-    /* Mobile: wrap complete sentences naturally inside the smaller inner ring. */
+    
     .footer-takeover .portfolio-disclaimer {
         width: clamp(165px, 46vw, 232px);
         max-width: 100%;
@@ -476,7 +476,7 @@
         margin-top: 3px;
     }
 
-    /* ORBIT */
+    
 
     .warning-line {
         width: clamp(320px, 95vw, 420px);
@@ -488,9 +488,9 @@
         letter-spacing: 0.06em;
     }
 
-    /* ==================================================
-   11. IMAGE MODAL
-================================================== */
+    
+
+
 
     .img-modal {
         position: fixed;
@@ -558,9 +558,9 @@
         line-height: 1.6;
     }
 
-    /* ==================================================
-   12. VIDEO MODAL
-================================================== */
+    
+
+
 
     .video-modal {
         position: fixed;

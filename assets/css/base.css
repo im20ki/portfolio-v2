@@ -277,23 +277,32 @@ body.contact-open .site-header .logo {
   letter-spacing: 0.04em;
 }
 
-.skill-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* Skills are grouped by role, so current strengths are easy to scan. */
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
 }
 
-.skill-list li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.skill-group {
+  min-width: 0;
 }
 
-.skill-list i {
-  width: 24px;
-  text-align: center;
-  flex-shrink: 0;
+.skill-group h4 {
+  margin-bottom: 6px;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0.085em;
+  color: #6b7280;
+}
+
+.skill-group p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #222;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* ==================================================

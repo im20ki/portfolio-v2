@@ -68,7 +68,15 @@
 
     .hero-content.cyber-ui {
         bottom: 6%;
-        padding: 24px 28px;
+        width: min(90vw, 340px);
+        padding: 24px 20px;
+    }
+
+    .hero-eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        line-height: 1.5;
+        overflow-wrap: normal;
     }
 
     .hero-title {

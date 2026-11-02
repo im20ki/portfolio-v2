@@ -13,24 +13,24 @@
   <link rel="stylesheet" href="assets/css/mobile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- [임시 개발용 버전 표시] 숨기기: body의 버전 span에 hidden 추가 / 삭제: 이 style과 span 제거 -->
+  <!-- [임시 개발용 버전 표시] PC 하단 고정 / 모바일 숨김. 필요 시 span과 이 style을 삭제 -->
   <style>
     .dev-version-tag {
-      /* 화면(뷰포트)에 고정: 히어로뿐 아니라 모든 섹션에서 계속 보임 */
       position: fixed;
-      top: max(6px, env(safe-area-inset-top));
-      left: 50%;
-      transform: translateX(-50%);
+      right: 12px;
+      bottom: max(10px, env(safe-area-inset-bottom));
       z-index: 9999;
-      padding: 4px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      border-radius: 999px;
-      background: rgba(17, 24, 39, 0.86);
-      color: #fff;
-      font: 600 11px/1.4 Arial, sans-serif;
-      letter-spacing: 0.04em;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: rgba(115, 115, 115, 0.45);
+      font: 400 10px/1.3 Arial, sans-serif;
+      letter-spacing: 0.025em;
       white-space: nowrap;
       pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .dev-version-tag { display: none !important; }
     }
     .dev-version-tag[hidden] { display: none !important; }
   </style>
@@ -41,7 +41,7 @@
 <body>
 
   <!-- [임시 개발용 버전 표시] 작업 배포마다 숫자를 1씩 증가시킵니다. -->
-  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 027</span>
+  <span class="dev-version-tag" aria-label="포트폴리오 V2 개발 버전">V2 · build 028</span>
 
 
   <header class="site-header">

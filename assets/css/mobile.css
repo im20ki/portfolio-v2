@@ -126,6 +126,21 @@
         margin: 0;
     }
 
+    #about .skill-groups {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    #about .skill-group h4 {
+        font-size: 0.7rem;
+        margin-bottom: 4px;
+    }
+
+    #about .skill-group p {
+        font-size: 0.91rem;
+        line-height: 1.5;
+    }
+
     #about .about-lead,
     #about .about-desc {
         font-size: 0.95rem;
